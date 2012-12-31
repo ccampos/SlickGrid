@@ -30,21 +30,51 @@ $(function() {
 	$(function() {
 		var data = [];
 
-		var i;
-		var startDate;
-		for (i = 0; i < 50000; i += 1) {
+		var i,
+			duration,
+			startNum,
+			startDate,
+			finishDate;
+		for (i = 0; i < 5; i += 1) {
+			duration = randomNumber(31);
+			startNum = randomNumber(1111111111111);
+			startDate =  new Date(startNum);
+			console.log('startDate:', startDate);
 			data[i] = {
 				title: 'Task ' + i,
-				duration: randomNumber(31) + ' days',
+				duration: duration + ' days',
 				percentComplete: randomNumber(100),
-				start: new Date(startDate = randomNumber(1111111111111)).toJSON().substring(0,10),
-				finish: new Date(startDate + randomNumber(111111111111)).toJSON().substring(0,10),
-				effortDriven: (i % 5 == 0)
+				// start: new Date(startNum).toJSON().substring(0,10),
+				start: toJSONsubstring(startDate, 0, 10),
+				// finish: new Date(startDate.setDate(startDate.getDate() + duration)).toJSON().substring(0,10),
+				finish: toJSONsubstring(startDate.setDate(startDate.getDate() + duration), 0, 10),
+				effortDriven: (i % randomNumber(5) === 0)
 			};
 		};
 
 		var slickgrid = new Slick.Grid('#grid', data, columns, options);
 		console.log(slickgrid.getOptions());
+
+
+		/**
+		* Returns date to JSON format substring
+		*
+		* @method toJSONsubstring
+		* @param {Object} Date
+		* @param {Number} start substring
+		* @param {Number} end substring
+		* @return {String} JSON format substring
+		*/
+		function toJSONsubstring(date, start, end) {
+			var d = date,
+				s = start,
+				e = end,
+				substring;
+
+			substring = d.toJSON().substring(s,e);
+
+			return substring;
+		};
 
 		/**
 		* Generates a random number
