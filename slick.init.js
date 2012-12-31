@@ -40,5 +40,5 @@ $(function() {
 		};
 	};
 
-	var slickgrid = new Slick.Grid('#node', data, columns, options);
+	var slickgrid = new Slick.Grid('#grid', data, columns, options);
 });
