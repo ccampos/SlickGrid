@@ -7,7 +7,16 @@ var columns = [
 		id: 'duration', name: 'Duration', field: 'duration'
 	},
 	{
-		id: 'genre', name: 'Genre', field: 'genre'
+		id: '%', name: '% Complete', field: 'percentComplete'
+	},
+	{
+		id: 'start', name: 'Start', field: 'start'
+	},
+	{
+		id: 'finish', name: 'Finish', field: 'finish'
+	},
+	{
+		id: 'effort-driven', name: 'Effort Driven', field: 'effortDriven'
 	}
 ];
 
@@ -16,15 +25,20 @@ var options = {
 	enableColumnReorder: false
 };
 
-var data = [
-	{
-		title: 'Hello',
-		duration: '5 minutes'
-	},
-	{
-		title: 'World',
-		duration: '10 minutes'
-	}
-];
+$(function() {
+	var data = [];
 
-var slickgrid = new Slick.Grid('#node', data, columns, options);
+	var i;
+	for (i = 0; i < 50000; i += 1) {
+		data[i] = {
+			title: 'Task ' + i,
+			duration: '5 days',
+			percentComplete: Math.round(Math.random() * 100),
+			start: '01/01/2012',
+			finish: '12/31/2012',
+			effortDriven: (i % 5 == 0)
+		};
+	};
+
+	var slickgrid = new Slick.Grid('#node', data, columns, options);
+});
