@@ -31,23 +31,21 @@ $(function() {
 		var data = [];
 
 		var i,
-			duration,
+			timeAvail,
 			startNum,
 			startDate,
 			finishDate;
 		for (i = 0; i < 5; i += 1) {
-			duration = randomNumber(31);
+			timeAvail = randomNumber(31);
 			startNum = randomNumber(1111111111111);
 			startDate =  new Date(startNum);
 			console.log('startDate:', startDate);
 			data[i] = {
 				title: 'Task ' + i,
-				duration: duration + ' days',
+				duration: timeAvail + ' days',
 				percentComplete: randomNumber(100),
-				// start: new Date(startNum).toJSON().substring(0,10),
 				start: toJSONsubstring(startDate, 0, 10),
-				// finish: new Date(startDate.setDate(startDate.getDate() + duration)).toJSON().substring(0,10),
-				finish: toJSONsubstring(startDate.setDate(startDate.getDate() + duration), 0, 10),
+				finish: toJSONsubstring(new Date(startDate.setDate(startDate.getDate() + timeAvail)), 0, 10),
 				effortDriven: (i % randomNumber(5) === 0)
 			};
 		};
