@@ -1,3 +1,7 @@
 #grid {
-  height: 500px;
+  height: 200px;
   width: 80%; }
+
+fieldset {
+  display: table-column;
+  width: 800px; }
