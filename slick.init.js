@@ -5,7 +5,7 @@ $(function() {
 			id: 'title', name: 'Title', field: 'title'
 		},
 		{
-			id: 'duration', name: 'Duration', field: 'duration'
+			id: 'duration', name: 'Duration (days)', field: 'duration'
 		},
 		{
 			id: '%', name: '% Complete', field: 'percentComplete'
@@ -31,21 +31,20 @@ $(function() {
 		var data = [];
 
 		var i,
-			timeAvail,
+			days,
 			startNum,
-			startDate,
-			finishDate;
+			startDate;
+
 		for (i = 0; i < 5; i += 1) {
-			timeAvail = randomNumber(31);
+			days = randomNumber(31);
 			startNum = randomNumber(1111111111111);
 			startDate =  new Date(startNum);
-			console.log('startDate:', startDate);
 			data[i] = {
 				title: 'Task ' + i,
-				duration: timeAvail + ' days',
+				duration: days,
 				percentComplete: randomNumber(100),
 				start: toJSONsubstring(startDate, 0, 10),
-				finish: toJSONsubstring(new Date(startDate.setDate(startDate.getDate() + timeAvail)), 0, 10),
+				finish: toJSONsubstring(new Date(startDate.setDate(startDate.getDate() + days)), 0, 10),
 				effortDriven: (i % randomNumber(5) === 0)
 			};
 		};
