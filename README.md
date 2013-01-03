@@ -1,4 +1,4 @@
-SlickGrid Implementation that contains random start date, duration, and sets finish date according to these
+My code is in 'slick.init.js' - SlickGrid Implementation that contains random start date, duration, and sets finish date according to these
 
 # Welcome to SlickGrid
 
