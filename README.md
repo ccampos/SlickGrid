@@ -1,3 +1,5 @@
+SlickGrid Implementation that contains random start date, duration, and sets finish date according to these
+
 # Welcome to SlickGrid
 
 For now, please check out [the wiki](/mleibman/SlickGrid/wiki).
